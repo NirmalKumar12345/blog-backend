@@ -23,7 +23,7 @@ export const PostValidationSchema = {
             errorMessage: "Tags must be an array"
         },
     },
-    "authorDetails.name": {
+    name: {
         notEmpty: {
             errorMessage: "Author name is required"
         },

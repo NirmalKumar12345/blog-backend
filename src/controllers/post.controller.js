@@ -27,7 +27,7 @@ export const CreatePost = async (req, res) => {
         res.status(201).json({ msg: "Post Created", post });
     }
     catch (err) {
-        res.status(500).json({ msg: "Server Error", err });
+        res.status(500).json({ msg: "Server Error", err: err.message });
     }
 }
 
@@ -51,7 +51,7 @@ export const getPosts = async (req, res) => {
         res.status(200).json({ total, page: Number(page), totalPages: Math.ceil(total / limit), post });
     }
     catch (err) {
-        res.status(500).json({ msg: "Server Error", err });
+        res.status(500).json({ msg: "Server Error", err: err.message });
     }
 
 }
@@ -66,7 +66,7 @@ export const getPostById = async (req, res) => {
         res.status(200).json({ post });
     }
     catch (err) {
-        res.status(500).json({ msg: "Server Error", err });
+        res.status(500).json({ msg: "Server Error", err: err.message });
     }
 
 }
@@ -118,6 +118,6 @@ export const deletePost = async(req,res)=>{
         res.status(200).json({msg: "Post Deleted Successfully"});
     }
     catch (err) {
-        res.status(500).json({ msg: "Server Error", err });
+        res.status(500).json({ msg: "Server Error", err: err.message });
     }
 }

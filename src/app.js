@@ -30,4 +30,9 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/post', Post);
 app.use('/uploads', express.static("uploads"))
+app.use((err, req, res, next) => {
+  console.error(err);
+  const status = err.status || 500;
+  res.status(status).json({ msg: err.message || 'Server Error' });
+});
 export default app;

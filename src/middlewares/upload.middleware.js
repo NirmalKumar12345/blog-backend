@@ -4,9 +4,13 @@ import cloudinary from "../config/cloudinary.js";
 
 const storage = new CloudinaryStorage({
     cloudinary,
-    params: {
+    params: async (req, file) => {
+        return {
         folder: "blog_uploads",
-        allowed_formats: ["jpg", "png", "jpeg", "svg", "webp"],
+        resource_type: "image",
+        format: file.mimetype.split("/")[1],
+        allowed_formats: ["jpg", "png", "jpeg", "webp"],
+        };
     },
 });
 
